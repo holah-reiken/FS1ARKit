@@ -1146,6 +1146,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   trackPiecePrefab: {fileID: 4688358294461732, guid: b36e3f2f042bc498c9044b73c3f5d966,
     type: 2}
+  ballPrefab: {fileID: 4810478736705734, guid: 5770c73caca5b443b97ceccd1ab93125, type: 2}
+  scaleFactor: 0.5
 --- !u!1 &2134794026
 GameObject:
   m_ObjectHideFlags: 0

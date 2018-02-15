@@ -10,6 +10,10 @@ public class Manager : MonoBehaviour {
 	public Transform ballPrefab;
 
 	public float scaleFactor = .5f;
+	public float gameRadius = 1.5f;
+
+	Vector3 gameCenter = Vector3.zero;
+	bool gameCenterSet = false;
 
 	void Awake()
 	{
@@ -36,28 +40,41 @@ public class Manager : MonoBehaviour {
 
 			if (touch.phase == TouchPhase.Began) {
 
-				//Vector3 position = new Vector3 (0, 0, 1);
+				if (!gameCenterSet) {
+					gameCenter = touch.position;
+					gameCenterSet = true;
+				}
 
-				Vector3 touchPos = touch.position;
-				touchPos.z = 2;
-				Vector3 position = Camera.main.ScreenToWorldPoint(touchPos);
+				Vector3 touchPos = gameCenter; // HO-R touch.position;
+				Debug.Log("touchPos="+touchPos.ToString());
+				touchPos.z = gameRadius;
+				Vector3 position = Camera.main.ScreenToWorldPoint (touchPos);
 
 				Transform trackPiece = Transform.Instantiate (trackPiecePrefab);
 				trackPiece.position = position;
 
 				Vector3 trackScale = trackPiece.localScale;
 				trackPiece.localScale = new Vector3 (trackScale.x * scaleFactor, trackScale.y * scaleFactor, trackScale.z * scaleFactor);
-				Debug.Log ("trackScale="+trackScale.ToString()+", trackPiece.localScale=" + trackPiece.localScale.ToString ());
 
 				Transform ball = Transform.Instantiate (ballPrefab);
-				ball.position = new Vector3 (position.x, position.y + 1f, position.z);
+				ball.position = new Vector3 (position.x, position.y + .5f, position.z);
 
 				Vector3 ballScale = ball.localScale;
 				ball.localScale = new Vector3 (ballScale.x * scaleFactor, ballScale.y * scaleFactor, ballScale.z * scaleFactor);
-				Debug.Log ("ballScale="+ballScale.ToString()+", ball.localScale=" + ball.localScale.ToString ());
 
 				Debug.Log ("trackPiece.position=" + trackPiece.position.ToString () + ", touch.position=" + touch.position.ToString ());
 
+			} else if (touch.phase == TouchPhase.Moved) {
+				Ray ray = Camera.main.ScreenPointToRay (touch.position);
+				RaycastHit hit;
+				if (Physics.Raycast (ray, out hit)) {
+					Debug.Log (" You just hit " + hit.collider.gameObject.name);
+					Vector3 touchPos = touch.position;
+					touchPos.z = gameRadius;// hit.transform.position.z;
+
+					Vector3 position = Camera.main.ScreenToWorldPoint (touchPos);
+					hit.transform.position = position;
+				}
 			}
 		}
 	}

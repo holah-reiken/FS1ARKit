@@ -57,7 +57,7 @@ GameObject:
   - component: {fileID: 23124947379448424}
   - component: {fileID: 64244853183319774}
   m_Layer: 0
-  m_Name: CappedMetalTrack_arc
+  m_Name: CappedMetalTrackArc60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -69,7 +69,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1073699588679822}
-  m_LocalRotation: {x: 0.4699596, y: -0.023804337, z: 0.88226247, w: 0.0135730505}
+  m_LocalRotation: {x: 0.46995962, y: -0.023804339, z: 0.8822625, w: 0.013573051}
   m_LocalPosition: {x: -0.3809, y: 0.0374, z: -0.5865}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []

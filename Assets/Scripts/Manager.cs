@@ -57,7 +57,7 @@ public class Manager : MonoBehaviour {
 				trackPiece.localScale = new Vector3 (trackScale.x * scaleFactor, trackScale.y * scaleFactor, trackScale.z * scaleFactor);
 
 				Transform ball = Transform.Instantiate (ballPrefab);
-				ball.position = new Vector3 (position.x, position.y + .5f, position.z);
+				ball.position = new Vector3 (position.x, position.y + .5f, position.z + .2f);
 
 				Vector3 ballScale = ball.localScale;
 				ball.localScale = new Vector3 (ballScale.x * scaleFactor, ballScale.y * scaleFactor, ballScale.z * scaleFactor);

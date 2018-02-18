@@ -1098,11 +1098,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5feb78a3e8fc84ab4ab4d35448af446c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trackPiecePrefab: {fileID: 4963524414272520, guid: f5c26d8590148b64e846e0ab766db5c7,
+  trackPiecePrefab: {fileID: 4483081126366048, guid: acb6865d680f14dd69dae9a8a2f67704,
     type: 2}
   ballPrefab: {fileID: 4810478736705734, guid: 5770c73caca5b443b97ceccd1ab93125, type: 2}
+  centerPrefab: {fileID: 4526553549288306, guid: 326396fb3c9cf4785b85b197880f6512,
+    type: 2}
+  testPrefab: {fileID: 4483081126366048, guid: acb6865d680f14dd69dae9a8a2f67704, type: 2}
   scaleFactor: 0.5
-  gameRadius: 1.5
+  gameRadius: 1.45
 --- !u!1 &2134794026
 GameObject:
   m_ObjectHideFlags: 0

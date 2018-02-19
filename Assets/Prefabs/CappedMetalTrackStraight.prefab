@@ -11,6 +11,21 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1427861371181660}
   m_IsPrefabParent: 1
+--- !u!1 &1209552338040164
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4033602672203818}
+  m_Layer: 0
+  m_Name: StartPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &1364941808568748
 GameObject:
   m_ObjectHideFlags: 0
@@ -23,7 +38,7 @@ GameObject:
   - component: {fileID: 23252265916109306}
   - component: {fileID: 64192514547885846}
   m_Layer: 0
-  m_Name: metaltracksCap (1)
+  m_Name: metaltracksCapEnter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37,9 +52,10 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4237162389918828}
+  - component: {fileID: 65380817792800874}
   m_Layer: 0
   m_Name: CappedMetalTrackStraight
-  m_TagString: Untagged
+  m_TagString: TrackParent
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -55,7 +71,6 @@ GameObject:
   - component: {fileID: 33185259544103054}
   - component: {fileID: 23593251018161426}
   - component: {fileID: 64625981469998488}
-  - component: {fileID: 114682879868678088}
   m_Layer: 0
   m_Name: MetalTrackStraight
   m_TagString: Untagged
@@ -75,12 +90,25 @@ GameObject:
   - component: {fileID: 23599851399314030}
   - component: {fileID: 64786667916011422}
   m_Layer: 0
-  m_Name: metaltracksCap
+  m_Name: metaltracksCapExit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!4 &4033602672203818
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1209552338040164}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0.093, z: 0.843}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4237162389918828}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4091430374919146
 Transform:
   m_ObjectHideFlags: 1
@@ -101,12 +129,13 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1427861371181660}
   m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 0.638, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4091430374919146}
   - {fileID: 4748617383903720}
   - {fileID: 4506933201692598}
+  - {fileID: 4033602672203818}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
@@ -130,7 +159,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1794451174124664}
   m_LocalRotation: {x: -0, y: -0, z: 1, w: 0}
-  m_LocalPosition: {x: -0.0003092885, y: -0.027999997, z: -0.993}
+  m_LocalPosition: {x: 0.002, y: -0.033, z: -0.993}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4237162389918828}
@@ -301,14 +330,15 @@ MeshCollider:
   m_CookingOptions: 14
   m_SkinWidth: 0.01
   m_Mesh: {fileID: 4300000, guid: ec2910706893e394db9d08bec42883bb, type: 3}
---- !u!114 &114682879868678088
-MonoBehaviour:
+--- !u!65 &65380817792800874
+BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1668133281835516}
+  m_GameObject: {fileID: 1427861371181660}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c2e32f9442dd46e384a7a66603a677a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  serializedVersion: 2
+  m_Size: {x: 0.2, y: 0.2, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

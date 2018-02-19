@@ -2131,7 +2131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rotationToggle: {fileID: 1464673194}
   distanceToggle: {fileID: 2082418081}
-  trackPiecePrefab: {fileID: 4237162389918828, guid: 5c5b394ffc9bb4ca1b3256bd30d0e3ff,
+  trackPiecePrefab: {fileID: 4671995205942628, guid: 8b254bdf832ca4a378df471ff3d3dfb4,
     type: 2}
   ballPrefab: {fileID: 4810478736705734, guid: 5770c73caca5b443b97ceccd1ab93125, type: 2}
   scaleFactor: 0.5

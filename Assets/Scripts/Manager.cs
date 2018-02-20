@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Manager : MonoBehaviour {
 
@@ -9,11 +10,13 @@ public class Manager : MonoBehaviour {
 
 	public Toggle rotationToggle;
 	public Toggle distanceToggle;
+	public Slider scaleFactorSlider;
+	public TextMeshProUGUI scaleFactorText;
 
 	public Transform trackPiecePrefab;
 	public Transform ballPrefab;
 
-	public float scaleFactor = .5f;
+	float scaleFactor = .5f;
 	public float gameRadius = 1.5f;
 	public float speedForDistanceChange = 1.2f;
 	public float speedForRotation = .9f;
@@ -42,6 +45,10 @@ public class Manager : MonoBehaviour {
 
 		//Sets this to not be destroyed when reloading scene
 		DontDestroyOnLoad (gameObject);
+	}
+
+	void Start() {
+		SetScale (scaleFactorSlider.value);
 	}
 
 	void Update () {
@@ -161,6 +168,11 @@ public class Manager : MonoBehaviour {
 
 	}
 
+	void SetScale(float value) {
+		scaleFactorText.text = value.ToString ();
+		scaleFactor = value;
+	}
+
 	public void Reset() {
 		GameObject[] trackParents = GameObject.FindGameObjectsWithTag ("TrackParent");
 
@@ -175,6 +187,10 @@ public class Manager : MonoBehaviour {
 
 	public void DistanceToggleValueChanged(Toggle change) {
 		rotationToggle.isOn = !distanceToggle.isOn;
+	}
+
+	public void scaleSliderValueChanged(Slider change) {
+		SetScale (change.value);
 	}
 
 }

@@ -1,28 +1,64 @@
 fileFormatVersion: 2
-guid: 2f5302950fa634c9a90bb0fd18647592
-timeCreated: 1519074603
-licenseType: Pro
+guid: 56632569be23867409261baef696eed4
+timeCreated: 1519079384
+licenseType: Free
 ModelImporter:
   serializedVersion: 22
   fileIDToRecycleName:
     100000: metalCapWide
-    100002: metalTrackStraightWide_2
-    100004: //RootNode
-    100006: Sweep_2
+    100002: metalCapWide_2
+    100004: metalTrackCapWide
+    100006: metalTrackCapWide_2
+    100008: metalTrackCapWide_3
+    100010: metalTrackCapWide_4
+    100012: metalTrackStraightWideCurveLeft
+    100014: metalTrackStraightWideCurveLeft_2
+    100016: metalTrackStraightWideCurveRight
+    100018: metalTrackStraightWideCurveRight_2
+    100020: metalTrackStraightWideHalf
+    100022: metalTrackStraightWideHalf_2
+    100024: //RootNode
     400000: metalCapWide
-    400002: metalTrackStraightWide_2
-    400004: //RootNode
-    400006: Sweep_2
+    400002: metalCapWide_2
+    400004: metalTrackCapWide
+    400006: metalTrackCapWide_2
+    400008: metalTrackCapWide_3
+    400010: metalTrackCapWide_4
+    400012: metalTrackStraightWideCurveLeft
+    400014: metalTrackStraightWideCurveLeft_2
+    400016: metalTrackStraightWideCurveRight
+    400018: metalTrackStraightWideCurveRight_2
+    400020: metalTrackStraightWideHalf
+    400022: metalTrackStraightWideHalf_2
+    400024: //RootNode
     2100000: No Name
     2300000: metalCapWide
-    2300002: metalTrackStraightWide_2
-    2300004: Sweep_2
+    2300002: metalCapWide_2
+    2300004: metalTrackCapWide
+    2300006: metalTrackCapWide_2
+    2300008: metalTrackCapWide_3
+    2300010: metalTrackCapWide_4
+    2300012: metalTrackStraightWideCurveLeft_2
+    2300014: metalTrackStraightWideCurveRight_2
+    2300016: metalTrackStraightWideHalf_2
     3300000: metalCapWide
-    3300002: metalTrackStraightWide_2
-    3300004: Sweep_2
-    4300000: Sweep_2
-    4300002: metalCapWide
-    4300004: metalTrackStraightWide_2
+    3300002: metalCapWide_2
+    3300004: metalTrackCapWide
+    3300006: metalTrackCapWide_2
+    3300008: metalTrackCapWide_3
+    3300010: metalTrackCapWide_4
+    3300012: metalTrackStraightWideCurveLeft_2
+    3300014: metalTrackStraightWideCurveRight_2
+    3300016: metalTrackStraightWideHalf_2
+    4300000: metalCapWide
+    4300002: metalCapWide_2
+    4300004: metalTrackStraightWideHalf_2
+    4300006: metalTrackCapWide
+    4300008: metalTrackCapWide_2
+    4300010: metalTrackStraightWideCurveLeft_2
+    4300012: metalTrackCapWide_3
+    4300014: metalTrackCapWide_4
+    4300016: metalTrackStraightWideCurveRight_2
   externalObjects: {}
   materials:
     importMaterials: 1

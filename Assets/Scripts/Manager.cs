@@ -24,6 +24,7 @@ public class Manager : MonoBehaviour {
 	Transform highestPiece = null;
 
 	Vector2 touch2Position = Vector2.zero;
+	Vector3 positionOffset;
 
 	void Awake()
 	{
@@ -77,7 +78,7 @@ public class Manager : MonoBehaviour {
 					hitObject = null; // this is so that we don't bounce right back to touch position in the 1 touch logic below
 				}
 
-			} else {
+			} else { // one touch
 
 				var touch = Input.GetTouch(0);
 
@@ -91,6 +92,7 @@ public class Manager : MonoBehaviour {
 						if (hit.transform.CompareTag ("TrackParent")) {
 							Debug.Log ("- a TrackParent!");
 							hitObject = hit.transform.gameObject;
+							positionOffset = hit.transform.position - hit.point;
 						}
 					} else {
 
@@ -121,7 +123,7 @@ public class Manager : MonoBehaviour {
 					Vector3 cameraEulerAngles = Camera.main.transform.eulerAngles;
 
 					Transform trackPiece = hitObject.transform;
-					trackPiece.position = position;
+					trackPiece.position = new Vector3 (position.x + positionOffset.x, position.y + positionOffset.y, position.z + positionOffset.y);
 					trackPiece.eulerAngles = new Vector3 (0, 90 + cameraEulerAngles.y, 0);
 
 				} else if (touch.phase == TouchPhase.Ended && hitObject) {

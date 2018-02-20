@@ -6,6 +6,7 @@ TagManager:
   tags:
   - BackWall
   - TrackParent
+  - TrackPiece
   layers:
   - Default
   - TransparentFX

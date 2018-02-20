@@ -14,9 +14,15 @@ public class MetalBall : MonoBehaviour {
 		audioSource = GetComponent<AudioSource> ();
 	}
 
+	void Start() {
+		audioSource.Play();
+	}
+
 	void OnCollisionEnter (Collision col) {
-		if(col.gameObject.CompareTag("TrackParent")) {
-			StartCoroutine(Play());
+		Debug.Log ("col.gameObject.tag=" + col.gameObject.tag);
+		Debug.Log ("col.gameObject.name=" + col.gameObject.name);
+		if(col.gameObject.CompareTag("TrackParent") || col.gameObject.CompareTag("TrackPiece")) {
+			StartCoroutine("Play");
 		}
 	}
 
@@ -24,12 +30,16 @@ public class MetalBall : MonoBehaviour {
 		audioSource.Stop ();
 	}
 
-	IEnumerator Play() {
+	private IEnumerator Play() {
 
 		audioSource.clip = hitSound;
+		audioSource.loop = false;
+		Debug.Log ("play hit sound");
 		audioSource.Play ();
-		yield return new WaitForSeconds (1);
+		yield return new WaitForSeconds (.05f);
 		audioSource.clip = rollSound;
+		audioSource.loop = true;
+		Debug.Log ("play roll sound");
 		audioSource.Play ();
 	}
 }

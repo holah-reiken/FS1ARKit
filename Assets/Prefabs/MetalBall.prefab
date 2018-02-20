@@ -192,6 +192,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13a2a9167f27644c1a0ed522de0b9351, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitSound: {fileID: 8300000, guid: a91a8c938505b464aaa138a01066e851, type: 3}
+  rollSound: {fileID: 8300000, guid: caaa584162e7d4c09a8ae4928676d2ba, type: 3}
 --- !u!135 &135342800931552102
 SphereCollider:
   m_ObjectHideFlags: 1

@@ -21,10 +21,10 @@ public class Manager : MonoBehaviour {
 	Vector3 initialCameraPosition;
 
 	GameObject hitObject = null;
-	Transform highestPiece = null;
 
 	Vector2 touch2Position = Vector2.zero;
 	Vector3 positionOffset;
+	Vector3 currentEulerAngles;
 
 	void Awake()
 	{
@@ -47,15 +47,12 @@ public class Manager : MonoBehaviour {
 	void Update () {
 		if (Input.touchCount > 0 && trackPiecePrefab != null) {
 
-			Debug.Log ("????????? Input.touchCount=" + Input.touchCount + ", hitObject=" + hitObject + ", touch2Position=" + touch2Position);
-
 			if (Input.touchCount > 1 && hitObject) {
 
 				var touch = Input.GetTouch (1);
 
 				if (touch.phase == TouchPhase.Began) {
 
-					Debug.Log ("touch2.position=" + touch.position);
 					touch2Position = touch.position;
 				} if (touch.phase == TouchPhase.Moved && touch2Position != Vector2.zero) {
 					Vector2 newTouch2Position = touch.position;
@@ -73,7 +70,6 @@ public class Manager : MonoBehaviour {
 						
 					touch2Position = newTouch2Position;
 				} else if (touch.phase == TouchPhase.Ended && touch2Position != Vector2.zero) {
-					Debug.Log ("touch2 ended");
 					touch2Position = Vector2.zero;
 					hitObject = null; // this is so that we don't bounce right back to touch position in the 1 touch logic below
 				}
@@ -93,10 +89,10 @@ public class Manager : MonoBehaviour {
 							Debug.Log ("- a TrackParent!");
 							hitObject = hit.transform.gameObject;
 							positionOffset = hit.transform.position - hit.point;
+							currentEulerAngles = hit.transform.eulerAngles;
 						}
 					} else {
 
-						Debug.Log ("reposition");
 						Vector3 touchPos = touch.position;
 						touchPos.z = gameRadius;
 
@@ -109,10 +105,6 @@ public class Manager : MonoBehaviour {
 
 						Vector3 trackScale = trackPiece.localScale;
 						trackPiece.localScale = new Vector3 (trackScale.x * scaleFactor, trackScale.y * scaleFactor, trackScale.z * scaleFactor);
-
-						if (highestPiece == null || highestPiece.position.y < position.y) {
-							highestPiece = trackPiece;
-						}
 					}
 				} else if (touch.phase == TouchPhase.Moved && hitObject) {
 
@@ -124,7 +116,8 @@ public class Manager : MonoBehaviour {
 
 					Transform trackPiece = hitObject.transform;
 					trackPiece.position = new Vector3 (position.x + positionOffset.x, position.y + positionOffset.y, position.z + positionOffset.y);
-					trackPiece.eulerAngles = new Vector3 (0, 90 + cameraEulerAngles.y, 0);
+					Vector3 eulerAngles = trackPiece.eulerAngles;
+					trackPiece.eulerAngles = new Vector3 (0, currentEulerAngles.y + cameraEulerAngles.y, 0);
 
 				} else if (touch.phase == TouchPhase.Ended && hitObject) {
 					hitObject = null;
@@ -134,11 +127,24 @@ public class Manager : MonoBehaviour {
 		}
 	}
 
+	private Transform GetHighestPiece() {
+		GameObject[] trackParents = GameObject.FindGameObjectsWithTag ("TrackParent");
+
+		Transform highestPiece = null;
+		foreach (GameObject trackParent in trackParents) {
+			if (highestPiece == null || highestPiece.position.y < trackParent.transform.position.y) {
+				highestPiece = trackParent.transform;
+			}
+		}
+		return highestPiece;
+	}
+
 	public void DropBall() {
 
 		Debug.Log ("Dropball*******************");
 		Vector3 startPosition = new Vector3 (0, 2, 1.5f);
 
+		Transform highestPiece = GetHighestPiece ();
 		if (highestPiece != null) {
 			startPosition = Vector3.zero;
 
@@ -153,6 +159,14 @@ public class Manager : MonoBehaviour {
 		Vector3 ballScale = ball.localScale;
 		ball.localScale = new Vector3 (ballScale.x * scaleFactor, ballScale.y * scaleFactor, ballScale.z * scaleFactor);
 
+	}
+
+	public void Reset() {
+		GameObject[] trackParents = GameObject.FindGameObjectsWithTag ("TrackParent");
+
+		foreach (GameObject trackParent in trackParents) {
+			GameObject.Destroy (trackParent);
+		}
 	}
 		
 	public void RotationToggleValueChanged(Toggle change) {
